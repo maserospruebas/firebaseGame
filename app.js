@@ -77,8 +77,23 @@ firebase.database().ref("ganador")
 	$("#puchame").hide();
 });
 
+//resetear juego
 $("#reset").click(function(){
 	firebase.database().ref("ganador").set(null);
+	firebase.database().ref("hub")
+	.once("value")
+	.then(function(s){
+		var obj = s.val();
+		for(var k in obj){
+			obj[k].puntos = 0;
+		}
+		var updates = {};
+		updates["hub"] = obj;
+		firebase.database().ref().update(updates);
+	});
+	$("#ganador").html("");
+	$("#puchame").show();
+	localUser.puntos = 0;
 });
 
 //Template
@@ -99,5 +114,5 @@ var puchame = $("#puchame").hide();
 var localUser = {};
 
 //Main
-root.append(compile(data));
+root.html(compile(data));
 root.hide();
