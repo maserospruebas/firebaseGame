@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>BlisS</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  
+  
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+  
+</head>
+<body>
+    <div id="ganador"></div>
+    <button id="reset">
+      Reiniciar
+    </button>  
+    <button id="puchame">
+      Puchame!
+  </button>
+  <div id="root"></div>
+    <button id="login">
+    Inicia sesión con Google
+  </button>
+
+  <br>
+
+  
+<script type="text/handlebars-template" id="template">
+
+  {{#users}}
+  <ul>
+    <li>
+    <img class="imagen" width="50px" src={{photoURL}}>
+    <strong>{{displayName}}</strong>
+    <br>
+    {{email}}
+    <br>
+      <div class="contenedor">
+        <div style="width:{{puntos}}%" class="barra"></div>
+      </div>
+    </li>
+  </ul>
+  {{/users}}
+  
+</script>
+  
+<script src="https://www.gstatic.com/firebasejs/4.5.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDeQWL-tvxsVjJLa1pPwXB_6mDAINPYARI",
+    authDomain: "project-2814539431132233166.firebaseapp.com",
+    databaseURL: "https://project-2814539431132233166.firebaseio.com",
+    projectId: "project-2814539431132233166",
+    storageBucket: "project-2814539431132233166.appspot.com",
+    messagingSenderId: "285398439900"
+  };
+  firebase.initializeApp(config);
+</script>  
+  
+<script src="app.js" type="text/javascript"></script>
+
+</body>
+</html>
